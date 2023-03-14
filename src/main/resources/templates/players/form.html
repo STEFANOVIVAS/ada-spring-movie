@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    .movie-form-error {
+        color: red;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Player</title>
+</head>
+<body>
+  <form action="#" th:action="@{/app/players}" th:object="${player}" method="post">
+      <label th:text="#{player.name}" />
+      <input type="text" th:field="*{name}" />
+      <p th:if="${#fields.hasErrors('name')}" th:errorclass="player-form-error" th:errors="*{name}" /> <br />
+      <input type="hidden" th:field="*{id}" />
+      <input type="submit" th:value="#{action.save}" />
+
+  </form>
+</body>
+</html>
